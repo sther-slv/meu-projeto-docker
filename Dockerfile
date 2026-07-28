@@ -12,4 +12,4 @@ COPY --from=builder /app/src ./src
 EXPOSE 3000
 USER node
 
-CMD ["node", "src/index.js"]
+CMD ["node", "src/indexx.js"]
