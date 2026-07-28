@@ -19,10 +19,9 @@ Foi utilizado um Dockerfile com **multi-stage build** para isolar as dependênci
 
 ### Evidências da Parte 1:
 * **Tamanho da Imagem Gerada:**
-  ![Docker Images](docs/imagens/01-docker-images.png)
-
+  ![Print 1](docs/imagens/01-docker-images.png)
 * **Aplicação Rodando no Navegador:**
-  ![App Rodando](docs/imagens/02-app-rodando.png)
+  ![Print 2](docs/imagens/02-app-rodando.png)
 
 ---
 
@@ -32,10 +31,10 @@ Demonstração do comportamento da aplicação em relação à persistência de 
 
 ### Evidências da Parte 2:
 * **Sem Volume (Perda de dados ao recriar o container):**
-  ![Sem Volume](docs/imagens/03-sem-volume.png)
+  ![Print 3](docs/imagens/03-sem-volume.png)
 
 * **Com Volume Nomeado (Dados mantidos intactos):**
-  ![Com Volume](docs/imagens/04-com-volume.png)
+  ![Print 4](docs/imagens/04-com-volume.png)
 
 ---
 
@@ -48,10 +47,10 @@ Criação da rede `todo-net` para comunicação interna entre o container da apl
 
 ### Evidências da Parte 3:
 * **Inspeção da Rede (`docker network inspect`):**
-  ![Network Inspect](docs/imagens/05-network-inspect.png)
+  ![Print 5](docs/imagens/05-network-inspect.png)
 
 * **Consulta SQL no MySQL (`SELECT * FROM todo_items;`):**
-  ![Select MySQL](docs/imagens/06-select-mysql.png)
+  ![Print 6](docs/imagens/06-select-mysql.png)
 
 ---
 
@@ -64,7 +63,7 @@ Orquestração completa dos serviços `app` e `db` utilizando o `compose.yaml`, 
 
 ### Evidência da Parte 4:
 * **Status dos Serviços (`docker compose ps`):**
-  ![Compose PS](docs/imagens/07-compose-ps.png)
+  ![Print 7](docs/imagens/07-compose-ps.png)
 
 ---
 
@@ -77,7 +76,32 @@ Criação de um workflow de CI (`.github/workflows/ci.yml`) que valida o arquivo
 
 ### Evidências das Partes 5 e 6:
 * **Pipeline Integrado e Verde:**
-  ![CI Verde](docs/imagens/08-ci-verde.png)
+  ![Print 8](docs/imagens/08-ci-verde.png)
 
 * **Pipeline com Falha Detectada (PR Vermelho) + Logs do Erro:**
-  ![CI Vermelho](docs/imagens/09-ci-vermelho.png)
+  ![Print 9](docs/imagens/09-ci-vermelho.png)
+
+Respostas
+O que é o Docker Hub?
+É um registro público e remoto de imagens Docker na nuvem (análogo ao GitHub para código). Ele permite armazenar, versionar, distribuir e compartilhar imagens de containers prontas para execução em qualquer ambiente.
+
+Diferença entre CI e CD:
+O CI (Continuous Integration) foca na validação do código, automatizando builds e testes a cada envio para garantir estabilidade. O CD (Continuous Delivery/Deployment) assume após o CI ser aprovado, automatizando o empacotamento e a entrega contínua dos artefatos finais (a imagem Docker) na prateleira/registro para uso final.
+
+Por que usar token e Secrets em vez de escrever usuário e senha não cd.yml?
+Por segurança[citar: 1]. Escrever credenciais diretamente em um arquivo do repositório expõe sua senha publicamente no Git. Os Segredos funcionam como um cofre criptografado e o Token de Acesso Pessoal concedem uma autorização com escopo limitado que pode ser revogada sem alterar a senha principal da conta.
+
+O que significa uma tag latest?
+Indica a versão padrão e mais recente ( última compilação ) publicada de uma imagem em um repositório. Ela aponta automaticamente para a última build gerada na branch principal quando nenhuma tag numérica de versão é especificada.
+
+✅ Checklist de Entrega
+Repositório público no GitHub com histórico de commits (sem commit único "final")
+ Dockerfilefuncional multiestágios +.dockerignore
+ compose.yamlcom rede, volume nomeado, variáveis ​​de ambiente ehealthcheck
+ .env.exampleversionado e .envignorado
+Fluxo de trabalho do GitHub Actions em execução
+Um PR com o CI vermelho e depois verde (histórico visível)
+Workflow de CD ( cd.yml) configurado e publicado no Docker Hub
+Segredos DOCKERHUB_USERNAMEeDOCKERHUB_TOKEN​
+README preenchido com todos os prints pedidos e as respostas das perguntas.
+Link do repositório enviado ao professor.
