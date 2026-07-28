@@ -74,31 +74,6 @@ Criação de um workflow de CI (`.github/workflows/ci.yml`) que valida o arquivo
 
 > **Relato da Quebra Proposital do CI:**
 > Para demonstrar a atuação do CI na detecção de erros, alterei o comando de inicialização no `Dockerfile` apontando para um script inexistente (`src/indexx.js`). O pipeline de CI detectou a falha no momento do smoke test, já que a aplicação não conseguiu subir na porta 3000. Analisando os logs expostos no job do GitHub Actions, identificamos que o arquivo de entrada do Node não foi localizado, permitindo corrigir o caminho e reverter o pipeline para o status verde.
->
-> Respostas
-O que é o Docker Hub?
-É um registro público e remoto de imagens Docker na nuvem (análogo ao GitHub para código). Ele permite armazenar, versionar, distribuir e compartilhar imagens de containers prontas para execução em qualquer ambiente.
-
-Diferença entre CI e CD:
-O CI (Continuous Integration) foca na validação do código, automatizando builds e testes a cada envio para garantir estabilidade. O CD (Continuous Delivery/Deployment) assume após o CI ser aprovado, automatizando o empacotamento e a entrega contínua dos artefatos finais (a imagem Docker) na prateleira/registro para uso final.
-
-Por que usar token e Secrets em vez de escrever usuário e senha não cd.yml?
-Por segurança[citar: 1]. Escrever credenciais diretamente em um arquivo do repositório expõe sua senha publicamente no Git. Os Segredos funcionam como um cofre criptografado e o Token de Acesso Pessoal concedem uma autorização com escopo limitado que pode ser revogada sem alterar a senha principal da conta.
-
-O que significa uma tag latest?
-Indica a versão padrão e mais recente ( última compilação ) publicada de uma imagem em um repositório. Ela aponta automaticamente para a última build gerada na branch principal quando nenhuma tag numérica de versão é especificada.
-
-✅ Checklist de Entrega
-Repositório público no GitHub com histórico de commits (sem commit único "final")
- Dockerfilefuncional multiestágios +.dockerignore
- compose.yamlcom rede, volume nomeado, variáveis ​​de ambiente ehealthcheck
- .env.exampleversionado e .envignorado
-Fluxo de trabalho do GitHub Actions em execução
-Um PR com o CI vermelho e depois verde (histórico visível)
-Workflow de CD ( cd.yml) configurado e publicado no Docker Hub
-Segredos DOCKERHUB_USERNAMEeDOCKERHUB_TOKEN​
-README preenchido com todos os prints pedidos e as respostas das perguntas.
-Link do repositório enviado ao professor.
 
 ### Evidências das Partes 5 e 6:
 * **Pipeline Integrado e Verde:**
