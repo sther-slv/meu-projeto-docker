@@ -81,3 +81,44 @@ Criação de um workflow de CI (`.github/workflows/ci.yml`) que valida o arquivo
 
 * **Pipeline com Falha Detectada (PR Vermelho) + Logs do Erro:**
   ![CI Vermelho](docs/imagens/09-ci-vermelho.png)
+
+## 🚀 Entrega Contínua (CD) - Publicação no Docker Hub
+
+Nesta etapa foi configurado o pipeline de **CD (Continuous Delivery)** usando o GitHub Actions. A cada *push* realizado na branch `main`, a imagem Docker da aplicação é construída automaticamente e enviada para o repositório público no Docker Hub.
+
+---
+
+### 📷 Evidências do Processo
+
+#### 1. Token de Acesso Criado no Docker Hub
+*Token de acesso (Personal Access Token) gerado com permissões de leitura e escrita para autenticação do GitHub Actions.*
+
+![Token criado no Docker Hub](./docs/imagens/01-token-criado.png)
+
+---
+
+#### 2. Secrets Cadastrados no GitHub
+*Configuração das variáveis de ambiente (`DOCKERHUB_USERNAME` e `DOCKERHUB_TOKEN`) cadastradas com segurança no cofre do GitHub.*
+
+![Secrets do GitHub](./docs/imagens/02-secrets-github.png)
+
+---
+
+#### 3. Execução do Pipeline de CD (GitHub Actions)
+*Workflow `CD - Publicar no Docker Hub` finalizado com sucesso após a execução dos passos do arquivo `cd.yml`.*
+
+![Workflow do GitHub Actions verde](./docs/imagens/03-workflow-verde.png)
+
+---
+
+#### 4. Imagem Publicada no Docker Hub
+*Repositório público criado e atualizado no Docker Hub contendo a tag `latest` da aplicação.*
+
+![Imagem publicada no Docker Hub](./docs/imagens/04-imagem-docker.png)
+
+---
+
+#### 5. Prova de Funcionamento (`docker pull`)
+*Download e execução local da imagem baixada diretamente do repositório remoto do Docker Hub.*
+
+![Comando docker pull no terminal](./docs/imagens/05-imagem-terminal.png)
