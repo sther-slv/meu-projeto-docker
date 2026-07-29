@@ -19,10 +19,10 @@ Foi utilizado um Dockerfile com **multi-stage build** para isolar as dependênci
 
 ### Evidências da Parte 1:
 * **Tamanho da Imagem Gerada:**
-  ![Docker Images](docs/imagens/01-docker-images.png)
+  ![Docker Images](./docs/imagens/01-docker-images.png)
 
 * **Aplicação Rodando no Navegador:**
-  ![App Rodando](docs/imagens/02-app-rodando.png)
+  ![App Rodando](./docs/imagens/02-app-rodando.png)
 
 ---
 
@@ -32,10 +32,10 @@ Demonstração do comportamento da aplicação em relação à persistência de 
 
 ### Evidências da Parte 2:
 * **Sem Volume (Perda de dados ao recriar o container):**
-  ![Sem Volume](docs/imagens/03-sem-volume.png)
+  ![Sem Volume](./docs/imagens/03-sem-volume.png)
 
 * **Com Volume Nomeado (Dados mantidos intactos):**
-  ![Com Volume](docs/imagens/04-com-volume.png)
+  ![Com Volume](./docs/imagens/04-com-volume.png)
 
 ---
 
@@ -48,10 +48,10 @@ Criação da rede `todo-net` para comunicação interna entre o container da apl
 
 ### Evidências da Parte 3:
 * **Inspeção da Rede (`docker network inspect`):**
-  ![Network Inspect](docs/imagens/05-network-inspect.png)
+  ![Network Inspect](./docs/imagens/05-network-inspect.png)
 
 * **Consulta SQL no MySQL (`SELECT * FROM todo_items;`):**
-  ![Select MySQL](docs/imagens/06-select-mysql.png)
+  ![Select MySQL](./docs/imagens/06-select-mysql.png)
 
 ---
 
@@ -64,7 +64,7 @@ Orquestração completa dos serviços `app` e `db` utilizando o `compose.yaml`, 
 
 ### Evidência da Parte 4:
 * **Status dos Serviços (`docker compose ps`):**
-  ![Compose PS](docs/imagens/07-compose-ps.png)
+  ![Compose PS](./docs/imagens/07-compose-ps.png)
 
 ---
 
@@ -77,10 +77,10 @@ Criação de um workflow de CI (`.github/workflows/ci.yml`) que valida o arquivo
 
 ### Evidências das Partes 5 e 6:
 * **Pipeline Integrado e Verde:**
-  ![CI Verde](docs/imagens/08-ci-verde.png)
+  ![CI Verde](./docs/imagens/08-ci-verde.png)
 
 * **Pipeline com Falha Detectada (PR Vermelho) + Logs do Erro:**
-  ![CI Vermelho](docs/imagens/09-ci-vermelho.png)
+  ![CI Vermelho](./docs/imagens/09-ci-vermelho.png)
 
 ## 🚀 Entrega Contínua (CD) - Publicação no Docker Hub
 
