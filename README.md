@@ -121,4 +121,16 @@ Nesta etapa foi configurado o pipeline de **CD (Continuous Delivery)** usando o 
 #### 5. Prova de Funcionamento (`docker pull`)
 *Download e execução local da imagem baixada diretamente do repositório remoto do Docker Hub.*
 
-![Comando docker pull no terminal](./docs/imagens/05-imagem-terminal.png)
+### ❓ Perguntas e Respostas
+
+1. **O que é o Docker Hub, na sua visão?**
+   O Docker Hub é um registro público na nuvem para armazenamento e compartilhamento de imagens Docker. Ele funciona de forma semelhante ao GitHub, mas em vez de armazenar código-fonte, armazena pacotes e aplicações prontas em formato de contêiner para que qualquer pessoa consiga baixá-las e rodá-las facilmente.
+
+2. **Qual a diferença entre o CI (atividade anterior) e o CD (esta)?**
+   O **CI (Integração Contínua)** foca na validação e qualidade do código, executando testes e verificações automatizadas a cada novo *push*. Já o **CD (Entrega Contínua)** entra em ação após a aprovação do código para construir o pacote final (a imagem Docker) e publicá-lo automaticamente no ambiente de destino (Docker Hub).
+
+3. **Por que usamos um token e Secrets em vez de escrever o usuário e a senha no arquivo `cd.yml`?**
+   Por razões de segurança. O arquivo `cd.yml` fica visível no histórico do repositório, e expor credenciais nele permitiria o acesso não autorizado à conta do Docker Hub. O uso dos **Secrets** criptografa os dados sensíveis no GitHub, e o **Token** é uma chave revogável que limita o acesso apenas ao necessário, sem expor a senha principal.
+
+4. **O que significa a tag `latest` no endereço da imagem?**
+   A tag `latest` é uma etiqueta padrão que sinaliza qual é a versão mais recente e atualizada da imagem Docker disponível naquele repositório.
